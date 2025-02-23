@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <>
       <div className=" fixed top-0 z-30 w-full h-20 bg-gradient-to-b from-black-8 to-transparent" />
-      <header className="p-4 z-50 fixed top-0 left-1/2 -translate-x-1/2 w-full">
+      <header className="main-container p-4 z-50 fixed top-0 left-1/2 -translate-x-1/2 w-full">
         <div className=" flex justify-between items-center ">
           <div>
             <Logo />
