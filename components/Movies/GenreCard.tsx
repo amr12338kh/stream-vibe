@@ -1,11 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
 import { getImagePath } from "@/lib/helpers";
 import { cn } from "@/lib/utils";
-import { cardContainerVariants } from "@/lib/variants";
 import { GenreCardProps } from "@/types/types";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { memo } from "react";
+import { cva } from "class-variance-authority";
+
+export const cardContainerVariants = cva(
+  "group flex flex-col bg-black-10 transition-all duration-300 rounded-2xl border border-black-15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+  {
+    variants: {
+      type: {
+        genre:
+          "p-5 sm:p-7 min-w-[230px] sm:min-w-[268px] h-[270px] sm:h-[310px]",
+        top_genre:
+          "p-5 sm:p-7 min-w-[270px] sm:min-w-[340px] h-[330px] sm:h-[380px]",
+        must: "p-5 min-w-[270px] sm:min-w-[340px] h-[400px] md:h-[480px]",
+        wide: "aspect-video",
+        default: "p-5 min-w-[230px] sm:min-w-[268px] h-[320px] sm:h-[380px]",
+      },
+    },
+    defaultVariants: {
+      type: "default",
+    },
+  }
+);
 
 const GenreCard = memo(
   ({ isGenre, isTopGenre, movies, genreName, genreId }: GenreCardProps) => {
