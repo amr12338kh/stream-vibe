@@ -13,9 +13,10 @@ import type { Metadata } from "next";
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const movie = await getSingleMovie(params.id);
+  const { id } = await params;
+  const movie = await getSingleMovie(id);
 
   return {
     title: `${movie?.title} (${movie?.release_date?.slice(0, 4)}) - StreamVibe`,
@@ -39,7 +40,7 @@ export async function generateMetadata({
 }
 
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const id = (await params).id;
+  const { id } = await params;
 
   const [movie, credits, reviews] = await Promise.all([
     getSingleMovie(id),

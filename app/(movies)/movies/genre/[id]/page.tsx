@@ -12,9 +12,10 @@ import type { Metadata } from "next";
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const genreName = await getGenreNameById(params.id);
+  const { id } = await params;
+  const genreName = await getGenreNameById(id);
   const formattedName = formatGenreName(genreName);
 
   return {
@@ -23,7 +24,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${formattedName} Movies - StreamVibe`,
       description: `Explore a wide collection of ${formattedName} movies on StreamVibe. Find your next favorite film in the ${formattedName} genre!`,
-      url: `https://streamvibe-ak.vercel.app/movies/genre/${params.id}`,
+      url: `https://streamvibe-ak.vercel.app/movies/genre/${id}`,
       siteName: "StreamVibe",
       type: "website",
     },
@@ -31,7 +32,7 @@ export async function generateMetadata({
 }
 
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const id = (await params).id;
+  const { id } = await params;
 
   const [movies, genreName] = await Promise.all([
     getDiscoverMovies(id),
