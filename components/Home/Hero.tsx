@@ -8,12 +8,10 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Background component */}
       <MoviesBackground />
 
-      {/* Logo container - centered vertically and horizontally */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-        <div className="w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] lg:w-[350px] lg:h-[350px] relative">
+        <div className="w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] lg:w-[320px] lg:h-[320px] 2xl:w-[350px] 2xl:h-[350px] ">
           <Image
             src="/hero-logo.png"
             alt="StreamVibe logo"
@@ -26,14 +24,12 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Text container - positioned at the bottom */}
-      <div className="absolute bottom-10 left-0 right-0 z-20 px-4">
+      <div className=" absolute bottom-12 left-1/2 -translate-x-1/2 z-20 w-full">
         <div className="text-center mx-auto">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4">
             The Best Streaming Experience
           </h1>
 
-          {/* Desktop description */}
           <p className="hidden sm:block text-gray-60 mx-auto  w-full max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl text-xs lg:text-sm xl:text-[18px]">
             StreamVibe is the best streaming experience for watching your
             favorite movies and shows on demand, anytime, anywhere. With
@@ -43,7 +39,6 @@ const Hero = () => {
             content you want to watch.
           </p>
 
-          {/* Mobile description */}
           <p className="text-gray-60 text-sm max-w-md sm:hidden">
             StreamVibe is the best streaming experience for watching your
             favorite movies and shows on demand, anytime, anywhere.
