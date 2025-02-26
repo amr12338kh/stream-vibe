@@ -10,8 +10,8 @@ const Hero = () => {
     <section className="relative min-h-screen overflow-hidden">
       <MoviesBackground />
 
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-        <div className="w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] lg:w-[320px] lg:h-[320px] 2xl:w-[350px] 2xl:h-[350px] ">
+      <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 z-20">
+        <div className="w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] lg:w-[300px] lg:h-[300px] 2xl:w-[320px] 2xl:h-[320px] ">
           <Image
             src="/hero-logo.png"
             alt="StreamVibe logo"
@@ -26,7 +26,7 @@ const Hero = () => {
 
       <div className=" absolute bottom-12 left-1/2 -translate-x-1/2 z-20 w-full">
         <div className="text-center mx-auto">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold mb-1 sm:mb-2">
             The Best Streaming Experience
           </h1>
 
