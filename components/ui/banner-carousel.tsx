@@ -126,7 +126,7 @@ const Banner = memo(
         <div className="w-full h-full bg-gradient-to-t from-black-8 from-[4%] to-transparent z-10 absolute" />
 
         <div
-          className={`flex flex-col justify-end items-center h-full py-24 sm:py-32 px-6 sm:px-16 z-20 relative gap-y-4 sm:gap-y-8`}
+          className={`flex flex-col justify-end items-center h-full py-16 sm:py-32 px-6 sm:px-16 z-20 relative gap-y-4 sm:gap-y-8`}
         >
           <Heading
             className=" text-center !mb-0"
