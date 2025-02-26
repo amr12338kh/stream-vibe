@@ -57,6 +57,7 @@ const SearchInput = () => {
                   />
                   <Input
                     {...field}
+                    autoFocus
                     placeholder="Search movies..."
                     className="w-full pl-10 text-lg rounded-lg"
                     onChange={(e) => handleInputChange(e.target.value)}
