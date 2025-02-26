@@ -7,11 +7,11 @@ import React from "react";
 const page = () => {
   return (
     <main className="pt-10">
-      <Section>
+      <Section id="plans">
         <Pricing />
       </Section>
 
-      <Section>
+      <Section id="features">
         <Features />
       </Section>
 

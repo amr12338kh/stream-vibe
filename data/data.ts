@@ -173,6 +173,10 @@ export const moviesLinks: LinksProps[] = [
     link: "/movies/#genres",
   },
   {
+    title: "Top 10 in Genres",
+    link: "/movies/#top-genres",
+  },
+  {
     title: "Trending",
     link: "/movies/#trending",
   },
@@ -181,27 +185,27 @@ export const moviesLinks: LinksProps[] = [
     link: "/movies/#new-release",
   },
   {
-    title: "Popular",
-    link: "/movies/#Popular",
+    title: "Must Watch",
+    link: "/movies/#must-watch",
   },
 ];
 
 export const showsLinks: LinksProps[] = [
   {
     title: "Genres",
-    link: "/shows/#genres",
+    link: "/",
   },
   {
     title: "Trending",
-    link: "/shows/#trending",
+    link: "/",
   },
   {
     title: "New Release",
-    link: "/shows/#new-release",
+    link: "/",
   },
   {
     title: "Popular",
-    link: "/shows/#Popular",
+    link: "/",
   },
 ];
 
@@ -215,11 +219,11 @@ export const supportLinks: LinksProps[] = [
 export const subscriptionLinks: LinksProps[] = [
   {
     title: "Plans",
-    link: "/subscription/#plans",
+    link: "/subscriptions/#plans",
   },
   {
     title: "Features",
-    link: "/subscription/#features",
+    link: "/subscriptions/#features",
   },
 ];
 
@@ -256,7 +260,7 @@ export const footerLinks: FooterLinksProps[] = [
     links: supportLinks,
   },
   {
-    title: "Subscription",
+    title: "Subscriptions",
     links: subscriptionLinks,
   },
   {

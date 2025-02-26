@@ -7,7 +7,7 @@ import React from "react";
 const page = () => {
   return (
     <main className="pt-10">
-      <Section>
+      <Section id="contact-us">
         <ContactForm />
       </Section>
       <Section>

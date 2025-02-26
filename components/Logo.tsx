@@ -5,7 +5,13 @@ import Link from "next/link";
 const Logo = ({ className }: { className?: string }) => {
   return (
     <Link href="/" className={cn("", className)}>
-      <Image src="/logo.svg" alt="logo" width={140} height={140} />
+      <Image
+        src="/logo.svg"
+        alt="StreamVibe Logo"
+        width={140}
+        height={140}
+        priority
+      />
     </Link>
   );
 };

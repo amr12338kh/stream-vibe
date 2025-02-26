@@ -17,11 +17,25 @@ const page = async () => {
 
       <Section className="!pt-0 " variant="secondary">
         <MoviesContainer>
-          <MoviesGenres />
-          <TopMoviesGenres />
-          <TrendingMovies />
-          <NewReleasesMovies />
-          <MustWatchMovies />
+          <section id="genres">
+            <MoviesGenres />
+          </section>
+
+          <section id="top-genres">
+            <TopMoviesGenres />
+          </section>
+
+          <section id="trending">
+            <TrendingMovies />
+          </section>
+
+          <section id="new-release">
+            <NewReleasesMovies />
+          </section>
+
+          <section id="must-watch">
+            <MustWatchMovies />
+          </section>
         </MoviesContainer>
       </Section>
 
