@@ -6,7 +6,7 @@ const Logo = ({ className }: { className?: string }) => {
   return (
     <Link href="/" className={cn("", className)}>
       <Image
-        src="/logo.svg"
+        src="/main-logo.png"
         alt="StreamVibe Logo"
         width={140}
         height={140}
