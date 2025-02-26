@@ -24,7 +24,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className=" absolute bottom-12 left-1/2 -translate-x-1/2 z-20 w-full">
+      <div className=" absolute bottom-16 sm:bottom-12 left-1/2 -translate-x-1/2 z-20 w-full">
         <div className="text-center mx-auto">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold mb-1 sm:mb-2">
             The Best Streaming Experience
