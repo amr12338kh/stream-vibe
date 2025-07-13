@@ -1,4 +1,3 @@
-// hooks/useMovieSearch.ts
 import { useState, useEffect } from "react";
 
 export const useMovieSearch = (query: string) => {

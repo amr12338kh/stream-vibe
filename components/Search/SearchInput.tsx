@@ -34,7 +34,7 @@ const SearchInput = () => {
       params.delete("query");
     }
     router.push(`${pathname}?${params.toString()}`);
-  }, 300);
+  }, 800);
 
   const handleInputChange = (value: string) => {
     form.setValue("input", value);
