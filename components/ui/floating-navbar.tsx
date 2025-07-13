@@ -28,7 +28,7 @@ export const FloatingNav = ({
           key={`link=${idx}`}
           href={navItem.link}
           className={cn(
-            "text-white py-3 px-4 rounded-md text-sm",
+            "text-white py-2 px-3 rounded-md text-xs",
             isActiveLink(navItem.link, pathname) && "bg-black-10"
           )}
         >

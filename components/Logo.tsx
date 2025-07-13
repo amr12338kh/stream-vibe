@@ -8,7 +8,7 @@ const Logo = ({ className }: { className?: string }) => {
       <img
         src="/main-logo.png"
         alt="StreamVibe Logo"
-        className="max-w-[110px] max-h-[110px]"
+        className="max-w-[120px] max-h-[120px]"
       />
     </Link>
   );

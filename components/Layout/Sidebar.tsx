@@ -37,7 +37,7 @@ const Sidebar = () => {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger className="bg-black-10 text-secondary-foreground hover:bg-black-10/80 p-3 rounded-md transition-colors duration-200">
+      <SheetTrigger className="text-secondary-foreground">
         <LuAlignRight className="size-5" />
       </SheetTrigger>
       <SheetContent className="bg-black-6 border-black-15 w-full sm:w-[380px] p-6">
