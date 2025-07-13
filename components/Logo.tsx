@@ -1,16 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 
 const Logo = ({ className }: { className?: string }) => {
   return (
-    <Link href="/" className={cn("", className)}>
-      <Image
+    <Link href="/" className={cn(className)}>
+      <img
         src="/main-logo.png"
         alt="StreamVibe Logo"
-        width={140}
-        height={140}
-        priority
+        className="max-w-[110px] max-h-[110px]"
       />
     </Link>
   );

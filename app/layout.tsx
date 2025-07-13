@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Manrope } from "next/font/google";
 import Header from "@/components/Layout/Header";
-import { ThemeProvider } from "@/components/theme/theme-provider";
 import Footer from "@/components/Layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -36,22 +35,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={manrope.className} suppressHydrationWarning>
+    <html lang="en" className={`${manrope.className} dark`}>
       <body className=" bg-black-8">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-
-          {children}
-          <Toaster />
-          <footer className="pt-16 sm:pt-20">
-            <Footer />
-          </footer>
-        </ThemeProvider>
+        <Header />
+        {children}
+        <Toaster />
+        <footer className="pt-16 sm:pt-20">
+          <Footer />
+        </footer>
       </body>
     </html>
   );

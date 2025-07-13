@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { memo, useMemo, useState } from "react";
@@ -6,7 +7,6 @@ import { Button } from "./button";
 import { cn } from "@/lib/utils";
 import Heading from "../Heading";
 import { EmblaCarouselProps, Movie, MovieDetails } from "@/types/types";
-import Image from "next/image";
 import { HiOutlineVolumeUp } from "react-icons/hi";
 import { BiLike } from "react-icons/bi";
 import { SlidesSwitch } from "./slides-switch.tsx";
@@ -105,15 +105,12 @@ const Banner = memo(
           !imageLoaded && "opacity-0"
         )}
       >
-        <div className=" w-full h-full absolute">
-          <Image
+        <div className="w-full h-full absolute">
+          <img
             src={getImagePath(movie?.backdrop_path || "", true)}
             alt={movie.title}
-            fill
-            priority={index === 0 || single}
-            sizes="100vw"
             className={cn(
-              "object-cover rounded-xl",
+              "object-cover w-full h-full rounded-xl",
               "transition-opacity duration-300",
               !imageLoaded && "opacity-0"
             )}
