@@ -9,7 +9,7 @@ const NewReleasesMovies = async () => {
   return (
     <Carousel title="New Releases">
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} isNew />
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </Carousel>
   );

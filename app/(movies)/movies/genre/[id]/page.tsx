@@ -1,13 +1,14 @@
-// import Carousel from "@/components/ui/carousel";
-import Heading from "@/components/Heading";
-import CTA from "@/components/Home/CTA";
 import MovieCard from "@/components/Movies/MovieCard";
-import MoviesContainer from "@/components/Movies/MoviesContainer";
 import Section from "@/components/Section";
 import { formatGenreName, getGenreNameById } from "@/lib/helpers";
 import { getDiscoverMovies } from "@/lib/utils";
 import React from "react";
 import type { Metadata } from "next";
+import MoviesWrapper from "@/components/Movies/MoviesWrapper";
+import Carousel from "@/components/ui/carousel";
+import GenreCard from "@/components/Movies/GenreCard";
+import MustWatchMovies from "@/components/Movies/MustWatchMovies";
+import MoviesGenres from "@/components/Movies/MoviesGenres";
 
 export async function generateMetadata({
   params,
@@ -42,26 +43,50 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const formattedName = formatGenreName(genreName);
 
   return (
-    <main className="pt-10">
+    <MoviesWrapper>
       <Section>
-        <Heading
-          title={`${formattedName} Genre`}
-          subtitle={`Explore our wide variety of movies from ${formattedName} genre`}
-          className="sm:hidden"
-        />
-        <MoviesContainer title={`${formattedName} Genre`}>
-          <div className="grid grid-cols-1  tablet:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-            {movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} isWide />
-            ))}
-          </div>
-        </MoviesContainer>
+        <Carousel
+          title={`Best ${formattedName} Movies to Watch`}
+          subtitle={`Explore our wide variety of movies from the ${formattedName} genre`}
+        >
+          {movies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </Carousel>
       </Section>
 
-      <Section>
-        <CTA />
+      <Section variant="secondary">
+        <div className="hidden sm:block">
+          <GenreCard
+            movies={movies}
+            genreId={Number(id)}
+            genreName={formattedName}
+            isTopGenre
+            isWide
+          />
+        </div>
+
+        <div className="sm:hidden">
+          <GenreCard
+            movies={movies}
+            genreId={Number(id)}
+            genreName={formattedName}
+            isTopGenre
+          />
+        </div>
       </Section>
-    </main>
+
+      <Section
+        id="must-watch"
+        className="bg-gradient-to-b from-black-8 via-red-950/80 to-black-8 !py-16 sm:!py-24"
+      >
+        <MustWatchMovies />
+      </Section>
+
+      <Section id="genres">
+        <MoviesGenres genreId={id} />
+      </Section>
+    </MoviesWrapper>
   );
 };
 

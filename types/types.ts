@@ -21,6 +21,8 @@ export interface EmblaCarouselProps {
   single?: boolean;
   children?: React.ReactNode;
   className?: string;
+  dragFree?: boolean;
+  isWide?: boolean;
 }
 
 export interface SlidesSwitchProps {
@@ -37,10 +39,8 @@ export interface MovieCardProps {
   movie: Movie;
   number?: number;
   isGenre?: boolean;
-  isMust?: boolean;
-  isTrending?: boolean;
-  isNew?: boolean;
   isWide?: boolean;
+  isTop?: boolean;
 }
 
 export interface Movie {
@@ -119,6 +119,7 @@ export interface GenreCardProps {
   genreId?: number;
   genres?: GenresProps[];
   movies?: Movie[];
+  isWide?: boolean;
 }
 
 export interface GenresProps {

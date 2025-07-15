@@ -22,7 +22,8 @@ const CTA = () => {
         <div className="px-8 md:px-20 flex flex-col md:flex-row justify-center md:justify-between items-center w-full h-full gap-y-10 md:gap-y-0">
           <Heading
             className="!mb-0 text-center md:text-start"
-            title="Start your free trial today!"
+            titleClassName="uppercase"
+            title="Start your free trial today"
             subtitle="This is a clear and concise call to action that encourages users to sign up for a free trial of StreamVibe."
           />
           <Button size={pageWidth < 1024 ? "default" : "xl"}>

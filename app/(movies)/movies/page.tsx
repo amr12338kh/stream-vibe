@@ -1,48 +1,55 @@
-import CTA from "@/components/Home/CTA";
-import MoviesBanner from "@/components/Movies/MoviesBanner";
-import MoviesContainer from "@/components/Movies/MoviesContainer";
 import MoviesGenres from "@/components/Movies/MoviesGenres";
+import MoviesWrapper from "@/components/Movies/MoviesWrapper";
 import MustWatchMovies from "@/components/Movies/MustWatchMovies";
 import NewReleasesMovies from "@/components/Movies/NewReleasesMovies";
 import TopMoviesGenres from "@/components/Movies/TopMoviesGenres";
 import TrendingMovies from "@/components/Movies/TrendingMovies";
+import WeekChoices from "@/components/Movies/WeekChoices";
 import Section from "@/components/Section";
 
 const page = async () => {
   return (
-    <main>
-      <Section className="!pb-0 sm:!py-20">
-        <MoviesBanner />
+    <MoviesWrapper>
+      {/* New Releases */}
+      <Section id="new-release">
+        <NewReleasesMovies />
       </Section>
 
-      <Section className="!pt-0 " variant="secondary">
-        <MoviesContainer>
-          <section id="genres">
-            <MoviesGenres />
-          </section>
-
-          <section id="top-genres">
-            <TopMoviesGenres />
-          </section>
-
-          <section id="trending">
-            <TrendingMovies />
-          </section>
-
-          <section id="new-release">
-            <NewReleasesMovies />
-          </section>
-
-          <section id="must-watch">
-            <MustWatchMovies />
-          </section>
-        </MoviesContainer>
+      {/* Genres Section */}
+      <Section id="genres">
+        <MoviesGenres />
       </Section>
 
-      <Section>
-        <CTA />
+      {/* Week Choices Section */}
+
+      <Section
+        id="week-choices"
+        className="bg-gradient-to-b from-black-8 via-red-950/80 to-black-8 !py-16 sm:!py-24"
+      >
+        <WeekChoices />
       </Section>
-    </main>
+
+      {/* Top Genres Section */}
+      <Section id="top-genres">
+        <TopMoviesGenres />
+      </Section>
+
+      {/* Trending Movies */}
+      <Section
+        id="trending"
+        className="bg-gradient-to-t from-red-950/80 to-black-8"
+      >
+        <TrendingMovies />
+      </Section>
+
+      {/* Must Watch */}
+      <Section
+        id="must-watch"
+        className="bg-gradient-to-b from-red-950/80 to-black-8"
+      >
+        <MustWatchMovies />
+      </Section>
+    </MoviesWrapper>
   );
 };
 

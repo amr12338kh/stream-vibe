@@ -1,12 +1,13 @@
-import Heading from "@/components/Heading";
-import CTA from "@/components/Home/CTA";
 import MovieCard from "@/components/Movies/MovieCard";
-import MoviesContainer from "@/components/Movies/MoviesContainer";
 import Section from "@/components/Section";
 import { formatGenreName, getGenreNameById } from "@/lib/helpers";
 import { getDiscoverMovies } from "@/lib/utils";
 import React from "react";
 import type { Metadata } from "next";
+import MoviesWrapper from "@/components/Movies/MoviesWrapper";
+import Carousel from "@/components/ui/carousel";
+import TopMoviesGenres from "@/components/Movies/TopMoviesGenres";
+import MustWatchMovies from "@/components/Movies/MustWatchMovies";
 
 export async function generateMetadata({
   params,
@@ -18,11 +19,11 @@ export async function generateMetadata({
   const formattedName = formatGenreName(genreName);
 
   return {
-    title: `Top 10 in ${formattedName} Genre - StreamVibe`,
-    description: `Discover the top 10 movies in the ${formattedName} genre on StreamVibe. Explore the best-rated films handpicked for you!`,
+    title: `Top Rated ${formattedName} Movies - StreamVibe`,
+    description: `Experience the best ${formattedName} movies on StreamVibe. From critically acclaimed masterpieces to fan favorites, discover your next must-watch film!`,
     openGraph: {
-      title: `Top 10 in ${formattedName} Genre - StreamVibe`,
-      description: `Discover the top 10 movies in the ${formattedName} genre on StreamVibe. Explore the best-rated films handpicked for you!`,
+      title: `Top Rated ${formattedName} Movies - StreamVibe`,
+      description: `Experience the best ${formattedName} movies on StreamVibe. From critically acclaimed masterpieces to fan favorites, discover your next must-watch film!`,
       url: `https://streamvibe-ak.vercel.app/movies/genre/top/${id}`,
       siteName: "StreamVibe",
       type: "website",
@@ -39,26 +40,30 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const formattedName = formatGenreName(genreName);
 
   return (
-    <main className="pt-10">
-      <Section>
-        <Heading
-          title={`Top 10 in ${formattedName} Genre`}
-          subtitle={`Explore our top 10 of movies in ${formattedName} genre`}
-          className="sm:hidden"
-        />
-        <MoviesContainer title={`Top 10 in ${formattedName} Genre`}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-            {movies.slice(0, 10).map((movie, i) => (
-              <MovieCard key={movie.id} movie={movie} number={i + 1} isWide />
-            ))}
-          </div>
-        </MoviesContainer>
+    <MoviesWrapper>
+      <Section className="">
+        <Carousel
+          title={`Top Rated ${formattedName} Movies`}
+          subtitle={`Discover the highest-rated ${formattedName} films that are making waves`}
+          className="!gap-0"
+        >
+          {movies.slice(0, 10).map((movie, i) => (
+            <MovieCard key={movie.id} movie={movie} isTop number={i} />
+          ))}
+        </Carousel>
       </Section>
 
-      <Section>
-        <CTA />
+      <Section id="top-genres">
+        <TopMoviesGenres genreId={id} />
       </Section>
-    </main>
+
+      <Section
+        id="must-watch"
+        className="bg-gradient-to-b from-black-8 via-red-950/80 to-black-8 !py-16 sm:!py-24"
+      >
+        <MustWatchMovies />
+      </Section>
+    </MoviesWrapper>
   );
 };
 

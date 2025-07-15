@@ -1,12 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React, { memo, useMemo, useState } from "react";
+import { useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
 import Heading from "../Heading";
-import { EmblaCarouselProps, Movie, MovieDetails } from "@/types/types";
+import {
+  EmblaCarouselProps,
+  GenresProps,
+  Movie,
+  MovieDetails,
+} from "@/types/types";
 import { HiOutlineVolumeUp } from "react-icons/hi";
 import { BiLike } from "react-icons/bi";
 import { SlidesSwitch } from "./slides-switch.tsx";
@@ -22,7 +27,7 @@ const CAROUSEL_OPTIONS = {
   align: "start" as const,
   containScroll: "trimSnaps" as const,
   skipSnaps: true,
-  duration: 30,
+  duration: 40,
 };
 
 const ACTION_BUTTONS = [
@@ -56,7 +61,7 @@ const BannerCarousel: React.FC<EmblaCarouselProps> = ({
     autoplay ? [Autoplay()] : []
   );
 
-  const content = useMemo(() => {
+  const Content = () => {
     if (single && movie) {
       return <Banner movie={movie} single />;
     }
@@ -64,91 +69,115 @@ const BannerCarousel: React.FC<EmblaCarouselProps> = ({
     return movies?.map((movie, index) => (
       <Banner key={movie.id} movie={movie} index={index} />
     ));
-  }, [single, movie, movies]);
+  };
 
   return (
-    <section className="py-10 relative">
+    <section className="relative w-full h-screen overflow-hidden">
       <div
-        className="overflow-hidden"
+        className="overflow-hidden h-full"
         ref={!single ? emblaRef : null}
         role="region"
         aria-label="Movie banner carousel"
       >
-        <div className="flex">{content}</div>
+        <div className="flex h-full">{<Content />}</div>
       </div>
       {!single && (
-        <div className=" hidden sm:block absolute bottom-24 left-1/2 -translate-x-1/2 w-full px-6 sm:px-16">
-          <SlidesSwitch emblaApi={emblaApi} variant="banner" />
+        <div className="hidden sm:block absolute bottom-44 right-0 padding-x z-30">
+          <SlidesSwitch emblaApi={emblaApi} variant="banner" showDots={false} />
         </div>
       )}
     </section>
   );
 };
 
-const Banner = memo(
-  ({
-    index,
-    movie,
-    single = false,
-  }: {
-    index?: number;
-    movie: MovieDetails | Movie;
-    single?: boolean;
-  }) => {
-    const [imageLoaded, setImageLoaded] = useState(false);
+const Banner = ({
+  index,
+  movie,
+  single = false,
+}: {
+  index?: number;
+  movie: Movie | MovieDetails;
+  single?: boolean;
+  genres?: GenresProps;
+}) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
 
-    return (
-      <div
-        key={index}
-        className={cn(
-          "h-[60vh] sm:h-[80vh] flex-full w-full relative",
-          !imageLoaded && "opacity-0"
-        )}
-      >
-        <div className="w-full h-full absolute">
-          <img
-            src={getImagePath(movie?.backdrop_path || "", true)}
-            alt={movie.title}
-            className={cn(
-              "object-cover w-full h-full rounded-xl",
-              "transition-opacity duration-300",
-              !imageLoaded && "opacity-0"
-            )}
-            onLoad={() => setImageLoaded(true)}
-          />
-          {!imageLoaded && (
-            <div className="absolute inset-0 bg-black-10 animate-pulse rounded-xl" />
+  return (
+    <div
+      key={index}
+      className={cn(
+        "flex-shrink-0 w-full h-full relative",
+        !imageLoaded && "opacity-0"
+      )}
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full">
+        <img
+          src={getImagePath(movie?.backdrop_path || "", true)}
+          alt={movie.title}
+          className={cn(
+            "object-cover w-full h-full",
+            "transition-opacity duration-300",
+            !imageLoaded && "opacity-0"
           )}
-        </div>
-        <div className="w-full h-full bg-gradient-to-t from-black-8 from-[4%] to-transparent z-10 absolute" />
+          onLoad={() => setImageLoaded(true)}
+        />
+        {!imageLoaded && (
+          <div className="absolute inset-0 bg-black-10 animate-pulse rounded-xl" />
+        )}
+      </div>
 
-        <div
-          className={`flex flex-col justify-end items-center h-full py-14 sm:py-32 px-6 sm:px-16 z-20 relative gap-y-4 sm:gap-y-8`}
-        >
-          <Heading
-            className=" text-center !mb-0"
-            isBanner
-            title={movie.title}
-            subtitle={movie.overview}
-          />
-          <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto gap-y-5 sm:gap-y-0">
-            {/* Play Button */}
-            <Link
-              href={!single ? `/movies/${movie.id}` : "#"}
-              className="w-full"
-            >
-              <Button
-                size="lg"
-                className="w-full sm:w-auto group"
-                aria-label="Play Now"
+      {/* Gradient Overlay */}
+      <div className="w-full h-full bg-gradient-to-t from-black-8 from-[4%] to-transparent z-10 absolute" />
+
+      {/* Content */}
+      <div className="relative z-20 flex items-end pb-20 h-full">
+        <div className="w-full mx-auto padding-x pb-24">
+          <div className="max-w-2xl lg:max-w-3xl">
+            <Heading
+              className="text-center sm:text-left !mb-0"
+              isBanner
+              title={movie.title.toUpperCase()}
+              subtitle={movie.overview}
+            />
+
+            <div className="flex flex-col sm:flex-row items-start gap-4 mt-8">
+              {/* Play Button */}
+              <Link
+                href={!single ? `/movies/${movie.id}` : "#"}
+                className="w-full sm:w-auto"
               >
-                <FaPlay className="group-hover:scale-110 transition-transform duration-200" />
-                Play Now
-              </Button>
-            </Link>
+                <Button
+                  size="lg"
+                  className={cn(
+                    "w-full sm:w-auto group px-8 py-3 text-lg font-semibold",
+                    "bg-white text-black-6 hover:bg-white/90",
+                    "rounded-md transition-all duration-200"
+                  )}
+                  aria-label="Play Now"
+                >
+                  <FaPlay className="mr-2 group-hover:scale-110 transition-transform duration-200" />
+                  Play
+                </Button>
+              </Link>
 
-            {/* Action Buttons */}
-            <div className="flex items-center gap-2">
+              {/* More Info Button */}
+              <Button
+                variant="secondary"
+                size="lg"
+                className={cn(
+                  "w-full sm:w-auto px-8 py-3 text-lg font-semibold",
+                  "bg-gray-500/70 text-white hover:bg-gray-500/50",
+                  "rounded-md transition-all duration-200"
+                )}
+                aria-label="More Info"
+              >
+                More Info
+              </Button>
+            </div>
+
+            {/* Action Buttons - Desktop Only */}
+            <div className="hidden lg:flex items-center gap-3 mt-6">
               {ACTION_BUTTONS.map(({ icon: Icon, label, action }) => (
                 <Button
                   key={label}
@@ -157,21 +186,24 @@ const Banner = memo(
                   onClick={action}
                   aria-label={label}
                   className={cn(
-                    "px-4 bg-black-6 border-black-15 border",
-                    "hover:bg-black-6/80 rounded-lg group"
+                    "p-3 bg-black/40 border-2 border-gray-500/50",
+                    "hover:bg-black/60 hover:border-gray-400",
+                    "rounded-full group transition-all duration-200"
                   )}
                 >
-                  <Icon className="transition-transform duration-200 group-hover:scale-110" />
+                  <Icon className="w-5 h-5 text-white transition-transform duration-200 group-hover:scale-110" />
                 </Button>
               ))}
             </div>
           </div>
         </div>
       </div>
-    );
-  }
-);
 
-Banner.displayName = "Banner";
+      {/* Fade edges */}
+      <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-black/20 to-transparent z-10" />
+      <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-black/20 to-transparent z-10" />
+    </div>
+  );
+};
 
 export default BannerCarousel;

@@ -7,9 +7,9 @@ const MustWatchMovies = async () => {
   const movies = await getTopRatedMovies();
 
   return (
-    <Carousel title="Must - Watch Movies" slidesToScroll={4}>
+    <Carousel title="Must - Watch Movies" slidesToScroll={3} isWide>
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} isMust />
+        <MovieCard key={movie.id} movie={movie} isWide />
       ))}
     </Carousel>
   );

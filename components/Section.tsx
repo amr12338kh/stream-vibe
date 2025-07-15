@@ -15,8 +15,8 @@ const Section = ({
     <section
       id={id}
       className={cn(
-        "py-14 sm:py-20 sm:main-container mx-auto",
-        variant === "primary" ? "px-4" : "pl-4 sm:px-4",
+        "py-8 sm:py-12",
+        variant === "primary" ? "padding-l" : "padding-x",
         className
       )}
     >

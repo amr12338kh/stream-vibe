@@ -9,16 +9,16 @@ import { useDotButton, usePrevNextButtons } from "@/hooks/carousel-hooks";
 const variantStyles = {
   default: {
     container:
-      "md:bg-black-6 md:border md:border-black-12 md:rounded-lg md:p-2 items-center md:gap-2 flex mt-10 md:mt-0",
+      "md:bg-black-6 md:border md:border-black-12 md:rounded-lg md:p-2 items-center md:gap-2 flex mt-5 md:mt-0",
     button: "hidden md:block",
     buttonSize: "sm",
     dots: "flex items-center md:gap-[1px]",
   },
   banner: {
-    container: "flex items-center justify-between w-full",
+    container: "flex items-center gap-2",
     button:
-      "px-4 bg-black-6 border-black-15 border hover:bg-black-6/80 rounded-lg",
-    buttonSize: "lg",
+      "px-4 bg-black-6 border-black-15 border rounded-lg opacity-30 hover:opacity-100 transition-opacity duration-200",
+    buttonSize: "sm",
     dots: "flex items-center gap-[1px]",
   },
   information: {

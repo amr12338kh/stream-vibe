@@ -9,7 +9,7 @@ const TrendingMovies = async () => {
   return (
     <Carousel title="Trending Now">
       {movies.map((movie) => (
-        <MovieCard key={movie.id} isTrending movie={movie} />
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </Carousel>
   );

@@ -9,7 +9,7 @@ const Recommendations = async ({ id }: { id: string }) => {
   return (
     <Carousel title="You May Also Like" slidesToScroll={4}>
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} isMust />
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </Carousel>
   );

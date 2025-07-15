@@ -47,6 +47,7 @@ export const getDataFromTMDB = async <T>(
     cacheTime?: number;
     language?: string;
     region?: string;
+    maxRetries?: number;
   }
 ): Promise<T> => {
   const {
@@ -54,78 +55,108 @@ export const getDataFromTMDB = async <T>(
     cacheTime = 60 * 60 * 24, // 24 hours default cache
     language = "en-US",
     region = "US",
+    maxRetries = 3, // Default retry attempts
   } = options || {};
 
-  try {
-    // Add common query parameters
-    const queryParams = {
-      ...params,
-      language,
-      region,
-    };
+  let lastError: Error | null = null;
+  let retryDelay = 1000; // Start with 1 second delay
 
-    const response = await tmdbApi.get<TMDBResponse>(endpoint, {
-      params: queryParams,
-      headers: {
-        "Cache-Control": `max-age=${cacheTime}`,
-      },
-    });
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      // Add common query parameters
+      const queryParams = {
+        ...params,
+        language,
+        region,
+      };
 
-    // Handle rate limiting
-    if (response.headers["x-ratelimit-remaining"] === "0") {
-      console.warn("TMDB API rate limit reached");
-    }
+      const response = await tmdbApi.get<TMDBResponse>(endpoint, {
+        params: queryParams,
+        headers: {
+          "Cache-Control": `max-age=${cacheTime}`,
+        },
+      });
 
-    return response.data as T;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      const tmdbError = error.response?.data as TMDBError;
-
-      // Handle specific TMDB error cases
-      switch (error.response?.status) {
-        case 401:
-          throw new TMDBApiError(
-            401,
-            endpoint,
-            "Invalid API key. Please check your configuration."
-          );
-        case 404:
-          throw new TMDBApiError(
-            404,
-            endpoint,
-            `Resource not found at endpoint: ${endpoint}`
-          );
-        case 429:
-          throw new TMDBApiError(
-            429,
-            endpoint,
-            "Rate limit exceeded. Please try again later."
-          );
-        default:
-          throw new TMDBApiError(
-            tmdbError?.status_code || 500,
-            endpoint,
-            tmdbError?.status_message || "An unexpected error occurred"
-          );
+      // Handle rate limiting
+      if (response.headers["x-ratelimit-remaining"] === "0") {
+        console.warn("TMDB API rate limit reached");
       }
-    }
 
-    // Handle non-Axios errors
-    throw new Error(
-      `Failed to fetch data from TMDB: ${(error as Error).message}`
-    );
+      return response.data as T;
+    } catch (error) {
+      lastError = error as Error;
+
+      if (axios.isAxiosError(error)) {
+        const tmdbError = error.response?.data as TMDBError;
+
+        // Don't retry on client errors (4xx) except rate limits
+        if (
+          error.response?.status &&
+          error.response.status < 500 &&
+          error.response.status !== 429
+        ) {
+          throw new TMDBApiError(
+            error.response.status,
+            endpoint,
+            tmdbError?.status_message || "Client error occurred"
+          );
+        }
+
+        // For 429 (rate limit) or 5xx errors, retry if we have attempts left
+        if (attempt < maxRetries) {
+          console.warn(
+            `Attempt ${attempt} failed, retrying in ${retryDelay}ms...`
+          );
+          await new Promise((resolve) => setTimeout(resolve, retryDelay));
+          retryDelay *= 2; // Exponential backoff
+          continue;
+        }
+
+        // If we're out of retries throw the last error
+        throw new TMDBApiError(
+          tmdbError?.status_code || 500,
+          endpoint,
+          tmdbError?.status_message ||
+            "An unexpected error occurred after all retries"
+        );
+      }
+
+      // For non-Axios errors throw immediately
+      throw new Error(
+        `Failed to fetch data from TMDB: ${(error as Error).message}`
+      );
+    }
   }
+
+  // All retries failed
+  throw (
+    lastError || new Error("Failed to fetch data from TMDB after all retries")
+  );
 };
 
 //  Get Trending Movies
 export const getTrendingMovies = async () => {
   try {
     const data = await getDataFromTMDB<TMDBResponse>(
-      "/trending/movie/day?page=1&page=2&page=3"
+      "/trending/movie/day?page=1&page=2&page=3",
+      { language: "en-US" }
     );
     return data.results;
   } catch (error) {
     console.error("Failed to fetch trending movies: ", error);
+    throw error;
+  }
+};
+
+//  Get Weekly Trending Movies
+export const getWeeklyTrendingMovies = async () => {
+  try {
+    const data = await getDataFromTMDB<TMDBResponse>("/trending/movie/week", {
+      language: "en-US",
+    });
+    return data.results.slice(0, 5);
+  } catch (error) {
+    console.error("Failed to fetch weekly trending movies: ", error);
     throw error;
   }
 };
@@ -144,7 +175,9 @@ export const getAllGenres = async () => {
 // Get Now Playing Movies
 export const getNowPlayingMovies = async () => {
   try {
-    const data = await getDataFromTMDB<TMDBResponse>("/movie/now_playing");
+    const data = await getDataFromTMDB<TMDBResponse>("/movie/now_playing", {
+      language: "en-US",
+    });
     return data.results;
   } catch (error) {
     console.error("Failed to fetch now playing movies: ", error);
@@ -155,7 +188,9 @@ export const getNowPlayingMovies = async () => {
 // Get Top Rated Movies
 export const getTopRatedMovies = async () => {
   try {
-    const data = await getDataFromTMDB<TMDBResponse>("/movie/top_rated");
+    const data = await getDataFromTMDB<TMDBResponse>("/movie/top_rated", {
+      language: "en-US",
+    });
     return data.results;
   } catch (error) {
     console.error("Failed to fetch top rated movies: ", error);
@@ -190,7 +225,10 @@ export const getDiscoverMovies = async (genreId?: string, sort_by?: string) => {
 // Get Single Movie
 export const getSingleMovie = async (id: string) => {
   try {
-    const data = await getDataFromTMDB<MovieDetails>(`/movie/${id}`);
+    const data = await getDataFromTMDB<MovieDetails>(`/movie/${id}`, {
+      language: "en-US",
+      params: { append_to_response: "videos,images" }, // Include additional movie data
+    });
     return data;
   } catch (error) {
     console.error("Failed to fetch single movie: ", error);
@@ -328,7 +366,15 @@ export const getPersonDetails = async (id: string) => {
 export const getMovieRecommendations = async (id: string) => {
   try {
     const data = await getDataFromTMDB<TMDBResponse>(
-      `/movie/${id}/recommendations`
+      `/movie/${id}/recommendations`,
+      {
+        language: "en-US",
+        params: {
+          page: 1,
+          sort_by: "vote_average.desc",
+          "vote_count.gte": 100, // Ensure quality recommendations
+        },
+      }
     );
     return data.results;
   } catch (error) {
@@ -339,10 +385,18 @@ export const getMovieRecommendations = async (id: string) => {
 
 export const getSearchedMovies = async (term: string) => {
   try {
-    const data = await getDataFromTMDB<TMDBResponse>(
-      `/search/movie?query=${term}`
-    );
-    return data.results;
+    const data = await getDataFromTMDB<TMDBResponse>(`/search/movie`, {
+      language: "en-US",
+      params: {
+        query: term,
+        include_adult: false,
+        "vote_count.gte": 50,
+        sort_by: "popularity.desc",
+      },
+    });
+    return data.results.filter(
+      (movie) => movie.poster_path && movie.backdrop_path && movie.overview
+    ); // Only return movies with complete data
   } catch (error) {
     console.error("Failed to fetch searched movies: ", error);
     throw error;
