@@ -7,13 +7,13 @@ import React from "react";
 const page = () => {
   return (
     <main className="pt-10">
-      <Section id="contact-us">
+      <Section variant="homepage" id="contact-us">
         <ContactForm />
       </Section>
-      <Section>
+      <Section variant="homepage">
         <FAQ />
       </Section>
-      <Section>
+      <Section variant="homepage">
         <CTA />
       </Section>
     </main>
