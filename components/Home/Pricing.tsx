@@ -45,7 +45,7 @@ const Pricing = ({ isHome }: { isHome?: boolean }) => {
           </Button>
         </div>
       </div>
-      <div className=" grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-8 lg:gap-6 xl:gap-8">
+      <div className=" grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-8 lg:gap-6">
         {pricingData.map(
           ({ title, description, monthly_price, yearly_price }, index) => (
             <div key={index}>

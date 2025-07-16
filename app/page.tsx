@@ -10,19 +10,19 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Section id="categories" variant="secondary">
+      <Section id="categories" variant="homepage">
         <MoviesGenres home />
       </Section>
-      <Section id="devices">
+      <Section id="devices" variant="homepage">
         <Devices />
       </Section>
-      <Section id="faq">
+      <Section id="faq" variant="homepage">
         <FAQ />
       </Section>
-      <Section id="pricing">
+      <Section id="pricing" variant="homepage">
         <Pricing isHome />
       </Section>
-      <Section>
+      <Section variant="homepage">
         <CTA />
       </Section>
     </main>

@@ -7,8 +7,8 @@ const Devices = () => {
   return (
     <div>
       <Heading
-        title="We Provide you streaming experience across various devices."
-        subtitle="With StreamVibe, you can enjoy your favorite movies and TV shows anytime, anywhere. Our platform is designed to be compatible with a wide range of devices, ensuring that you never miss a moment of entertainment."
+        title="All Your Devices, One Platform"
+        subtitle="Watch your favorite content anytime, anywhere. StreamVibe works seamlessly across all your devices."
       />
 
       <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10">
