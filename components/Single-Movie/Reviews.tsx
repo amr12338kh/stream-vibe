@@ -38,27 +38,29 @@ const Reviews = ({ reviews }: { reviews: MovieReview[] }) => {
           <div className="flex touch-pan-y backface-hidden w-full h-full gap-3 lg:gap-5">
             {reviews.map((review, index) => (
               <div key={index} className="flex-none">
-                <div className="p-6 sm:p-10 relative rounded-2xl overflow-hidden min-h-[175px] sm:min-h-[260px] w-[280px] sm:w-[400px] md:w-[380px] lg:w-[440px] space-y-4 sm:space-y-6 bg-black-6 border border-black-15">
+                <div className="p-6 sm:p-10 relative rounded-2xl overflow-hidden min-h-[175px] sm:min-h-[260px] w-[280px] sm:w-[400px] md:w-[380px] lg:w-[440px] space-y-4 sm:space-y-6 bg-black-8 border border-black-15 transition-all duration-300 group">
                   <div className="flex items-center justify-between w-full">
-                    <div>
-                      <h4 className="text-sm sm:text-xl">{review.author}</h4>
-                      <span className=" text-xs sm:text-base text-gray-60">
+                    <div className="space-y-1">
+                      <h4 className="text-sm sm:text-xl font-semibold group-hover:text-white transition-colors duration-300">
+                        {review.author}
+                      </h4>
+                      <span className="text-xs sm:text-base text-gray-40 font-medium">
                         {formatDate(review.created_at)}
                       </span>
                     </div>
-                    <div className="bg-black-8 border border-black-15 py-1 px-2 rounded-full flex items-center gap-2">
+                    <div className="bg-black-8 border border-black-15 py-2 px-3 rounded-full flex items-center gap-2 transition-all duration-300 group-hover:bg-black-10 group-hover:border-black-20">
                       <Stars
                         rating={(review.author_details.rating ?? 0) / 2}
                         className="size-3 sm:size-4"
                       />
-                      <span className="text-sm sm:text-base text-gray-60">
+                      <span className="text-sm sm:text-base text-gray-40 font-medium">
                         {review.author_details.rating ?? 0}
                       </span>
                     </div>
                   </div>
 
                   <div>
-                    <p className="text-xs sm:text-base line-clamp-4 text-gray-60">
+                    <p className="text-xs sm:text-base line-clamp-4 text-gray-40 leading-relaxed">
                       {review.content}
                     </p>
                   </div>

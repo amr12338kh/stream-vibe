@@ -50,19 +50,19 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   return (
     <main>
-      <Section className="!pb-0">
+      <section>
         <BannerCarousel single movie={movie} />
-      </Section>
+      </section>
 
-      <Section className="!pt-0">
+      <Section className="!pt-0 -mt-28 z-20 relative" variant="secondary">
         <Information movie={movie} credits={credits} reviews={reviews} />
       </Section>
 
       <Section>
-        <Recommendations id={id} />
+        <Recommendations id={id} movieName={movie?.title} />
       </Section>
 
-      <Section>
+      <Section variant="secondary">
         <CTA />
       </Section>
     </main>

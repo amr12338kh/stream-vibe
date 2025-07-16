@@ -23,7 +23,7 @@ const InformationContainer = ({
   return (
     <div
       className={cn(
-        "bg-black-10 border border-black-15 rounded-xl p-6 sm:p-12 space-y-4",
+        "bg-black-6 backdrop-blur-sm border border-black-15 rounded-xl p-6 sm:p-12 space-y-6 transition-all duration-300",
         className
       )}
     >

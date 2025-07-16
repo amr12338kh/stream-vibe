@@ -3,11 +3,21 @@ import Carousel from "../ui/carousel";
 import { getMovieRecommendations } from "@/lib/utils";
 import MovieCard from "./MovieCard";
 
-const Recommendations = async ({ id }: { id: string }) => {
+const Recommendations = async ({
+  id,
+  movieName,
+}: {
+  id: string;
+  movieName: string;
+}) => {
   const movies = await getMovieRecommendations(id);
 
   return (
-    <Carousel title="You May Also Like" slidesToScroll={4}>
+    <Carousel
+      title="More Like This"
+      subtitle={`Similar to ${movieName}`}
+      slidesToScroll={4}
+    >
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}

@@ -34,8 +34,8 @@ const Information = async ({
     : null;
 
   return (
-    <div className="flex flex-col xl:grid xl:grid-cols-3 gap-6">
-      <div className="xl:col-span-2 flex flex-col gap-y-8">
+    <div className="flex flex-col xl:grid xl:grid-cols-3 gap-2">
+      <div className="xl:col-span-2 flex flex-col gap-y-2">
         <InformationContainer title="description">
           <p className="text-sm sm:text-base md:text-lg">{movie.overview}</p>
         </InformationContainer>
@@ -49,8 +49,8 @@ const Information = async ({
         </div>
       </div>
 
-      <div>
-        <InformationContainer className="space-y-8">
+      <div className="xl:relative">
+        <InformationContainer className="xl:sticky xl:top-0 space-y-8">
           <div className="space-y-4">
             <HeadingTitle icon={Calendar} title="released year" />
             <p>{formatDate(movie.release_date)}</p>
@@ -65,7 +65,7 @@ const Information = async ({
               {movie.spoken_languages.map((language, index) => (
                 <span
                   key={index}
-                  className="py-2 px-3 rounded-lg bg-black-8 border border-black-15 text-sm sm:text-base"
+                  className="py-2 px-3 rounded-lg bg-black-8 hover:bg-black-6 duration-200 transition-colors border border-black-15 text-sm sm:text-base"
                 >
                   {language.english_name}
                 </span>
@@ -88,7 +88,7 @@ const Information = async ({
                 <Link
                   href={`/movies/genre/${genre.id}`}
                   key={index}
-                  className="py-2 px-3 rounded-lg bg-black-8 border border-black-15 text-sm sm:text-base"
+                  className="py-2 px-3 rounded-lg bg-black-8 hover:bg-black-6 duration-200 transition-colors border border-black-15 text-sm sm:text-base"
                 >
                   {genre.name}
                 </Link>
