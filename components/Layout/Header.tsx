@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { FloatingNav } from "../ui/floating-navbar";
 import Logo from "../Logo";
@@ -5,12 +7,19 @@ import { Bell, Search } from "lucide-react";
 import Sidebar from "./Sidebar";
 import { navItems } from "@/data/data";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const pathname = usePathname();
+  const shouldUsePaddingX =
+    pathname.startsWith("/movies") || pathname.startsWith("/search");
+
   return (
     <>
-      <div className=" fixed top-0 z-40 w-full h-24 bg-gradient-to-b from-black-8 to-transparent" />
-      <header className="main-container p-4 z-50 fixed top-0 left-1/2 -translate-x-1/2 w-full">
+      <div className=" fixed top-0 z-40 w-full h-20 bg-gradient-to-b from-black-8 via-black-10/50 to-transparent" />
+      <header
+        className={`${shouldUsePaddingX ? "padding-x" : "main-container"} py-4 z-50 fixed top-0 left-1/2 -translate-x-1/2 w-full`}
+      >
         <div className=" flex justify-between items-center ">
           <div>
             <Logo />

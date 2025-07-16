@@ -1,15 +1,21 @@
+"use client";
+
 import { footerLinks } from "@/data/data";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 import { Separator } from "../ui/separator";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+  const shouldUsePaddingX =
+    pathname.startsWith("/movies") || pathname.startsWith("/search");
 
   return (
     <div className="py-16 bg-black-6">
-      <div className="px-4 sm:main-container">
+      <div className={shouldUsePaddingX ? "padding-x" : "main-container"}>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-y-10 xl:gap-y-0">
           {footerLinks.map(({ title, links }, index) => (
             <div key={index} className="space-y-4">
