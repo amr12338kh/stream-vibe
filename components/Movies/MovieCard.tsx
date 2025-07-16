@@ -44,7 +44,7 @@ const MovieCard = ({
     <Card movie={movie} isWide={isWide} cols={cols} number={number} />
   );
 
-const Card = ({ movie, isWide, number = 0, cols, isTop }: MovieCardProps) => {
+const Card = ({ movie, isWide, cols, isTop }: MovieCardProps) => {
   const imagePath = getImagePath(
     isWide
       ? movie?.backdrop_path || movie?.poster_path || ""
@@ -103,29 +103,6 @@ const Card = ({ movie, isWide, number = 0, cols, isTop }: MovieCardProps) => {
               </span>
             </div>
           </div>
-
-          {number > 0 && (
-            <div className="absolute -bottom-6 right-2 sm:-bottom-3 sm:-right-3 md:-bottom-6 md:-right-6 2xl:-bottom-8 2xl:-right-8 z-10">
-              <h3
-                className={cn(
-                  "font-black text-[80px] sm:text-6xl md:text-[90px] leading-none relative selection-none"
-                )}
-              >
-                {/* Stroke effect using CSS classes instead of inline styles */}
-                <span
-                  className={cn(
-                    "absolute inset-0 text-transparent [-webkit-text-stroke:3px_#E50000]"
-                  )}
-                >
-                  {number < 10 ? `0${number}` : number}
-                </span>
-                {/* Main number */}
-                <span className="relative text-black-6 opacity-90">
-                  {number < 10 ? `0${number}` : number}
-                </span>
-              </h3>
-            </div>
-          )}
         </>
       )}
     </Link>
