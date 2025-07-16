@@ -68,7 +68,7 @@
   }
 
   .main-container {
-    @apply max-w-[1550px] mx-auto px-6 sm:px-0;
+    @apply max-w-[1550px] mx-auto px-6;
   }
 
   .secondary-container {
