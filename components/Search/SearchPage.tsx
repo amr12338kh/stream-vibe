@@ -25,8 +25,8 @@ const SearchPage = ({ trendingMovies }: { trendingMovies?: Movie[] }) => {
         {query ? (
           <>
             <Heading
-              title={`Results For: ${query}`}
-              subtitle={`Found ${movies.length} movies matching your search. Discover perfect matches from our vast collection of movies, carefully selected based on your interests.`}
+              title={`Search Results: "${query}"`}
+              subtitle={`Found ${movies.length} titles you might love.`}
             />
 
             {isLoading ? (
@@ -42,7 +42,7 @@ const SearchPage = ({ trendingMovies }: { trendingMovies?: Movie[] }) => {
                 {!isLoading && !error && (
                   <div className="grid grid-cols-1 tablet:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
                     {movies.map((movie: Movie) => (
-                      <MovieCard key={movie.id} movie={movie} isWide />
+                      <MovieCard key={movie.id} movie={movie} isWide cols />
                     ))}
                   </div>
                 )}
@@ -57,7 +57,7 @@ const SearchPage = ({ trendingMovies }: { trendingMovies?: Movie[] }) => {
             />
             <div className="grid grid-cols-1  tablet:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
               {trendingMovies?.map((movie: Movie) => (
-                <MovieCard key={movie.id} movie={movie} isWide />
+                <MovieCard key={movie.id} movie={movie} isWide cols />
               ))}
             </div>
           </>

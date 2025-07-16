@@ -19,13 +19,13 @@ const Header = () => {
             <FloatingNav navItems={navItems} />
           </div>
           <div className="items-center gap-5 hidden md:flex">
-            <Link href={"/search/movie"}>
+            <Link href={"/search"}>
               <Search className=" size-[18px] cursor-pointer" />
             </Link>
             <Bell className=" size-[18px] cursor-pointer" />
           </div>
           <div className="md:hidden flex items-center gap-4 bg-black-10 py-2 px-3 rounded-md">
-            <Link href={"/search/movie"}>
+            <Link href={"/search"}>
               <Search className=" size-[18px] cursor-pointer" />
             </Link>
             <div className="w-[1px] h-5 bg-white opacity-50" />

@@ -16,7 +16,7 @@ const Section = ({
       id={id}
       className={cn(
         "py-8 sm:py-12",
-        variant === "primary" ? "padding-l" : "padding-x",
+        variant === "primary" ? "padding-x" : "padding-l",
         className
       )}
     >

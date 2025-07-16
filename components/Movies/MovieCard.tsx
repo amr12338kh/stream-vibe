@@ -7,7 +7,13 @@ import { MovieCardProps } from "@/types/types";
 import Link from "next/link";
 import { Star } from "lucide-react";
 
-const MovieCard = ({ movie, isWide, number = 0, isTop }: MovieCardProps) =>
+const MovieCard = ({
+  movie,
+  isWide,
+  cols,
+  number = 0,
+  isTop,
+}: MovieCardProps) =>
   isTop ? (
     <div key={movie.id} className="flex items-end">
       <h3
@@ -35,10 +41,10 @@ const MovieCard = ({ movie, isWide, number = 0, isTop }: MovieCardProps) =>
       </div>
     </div>
   ) : (
-    <Card movie={movie} isWide={isWide} number={number} />
+    <Card movie={movie} isWide={isWide} cols={cols} number={number} />
   );
 
-const Card = ({ movie, isWide, number = 0, isTop }: MovieCardProps) => {
+const Card = ({ movie, isWide, number = 0, cols, isTop }: MovieCardProps) => {
   const imagePath = getImagePath(
     isWide
       ? movie?.backdrop_path || movie?.poster_path || ""
@@ -51,7 +57,7 @@ const Card = ({ movie, isWide, number = 0, isTop }: MovieCardProps) => {
       className={cn(
         "group/card transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:shadow-xl",
         isWide
-          ? "relative aspect-video min-w-[320px] sm:min-w-[400px] md:min-w-[500px] rounded-lg overflow-hidden"
+          ? `relative aspect-video overflow-hidden ${!cols && "min-w-[320px] sm:min-w-[400px] md:min-w-[500px]"}`
           : isTop
             ? "min-w-[170px] sm:min-w-[190px] h-[240px] sm:h-[300px] z-10"
             : "min-w-[230px] sm:min-w-[268px] h-[320px] sm:h-[380px]"

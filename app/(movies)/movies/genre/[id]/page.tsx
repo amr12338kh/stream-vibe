@@ -44,7 +44,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   return (
     <MoviesWrapper>
-      <Section>
+      <Section variant="secondary">
         <Carousel
           title={`Best ${formattedName} Movies to Watch`}
           subtitle={`Explore our wide variety of movies from the ${formattedName} genre`}
@@ -55,7 +55,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         </Carousel>
       </Section>
 
-      <Section variant="secondary">
+      <Section>
         <div className="hidden sm:block">
           <GenreCard
             movies={movies}
@@ -77,13 +77,14 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
       </Section>
 
       <Section
+        variant="secondary"
         id="must-watch"
         className="bg-gradient-to-b from-black-8 via-red-950/80 to-black-8 !py-16 sm:!py-24"
       >
         <MustWatchMovies />
       </Section>
 
-      <Section id="genres">
+      <Section variant="secondary" id="genres">
         <MoviesGenres genreId={id} />
       </Section>
     </MoviesWrapper>

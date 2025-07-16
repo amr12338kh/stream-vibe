@@ -1,6 +1,7 @@
 import React from "react";
 import CTA from "../Home/CTA";
 import MoviesBanner from "./MoviesBanner";
+import Section from "../Section";
 
 const MoviesWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -13,9 +14,9 @@ const MoviesWrapper = ({ children }: { children: React.ReactNode }) => {
       <div className="relative -mt-28 md:-mt-40 z-30">{children}</div>
 
       {/* CTA Section */}
-      <section className="relative bg-gradient-to-t from-black via-gray-900 to-black padding-x py-16 sm:py-24">
+      <Section className="relative">
         <CTA />
-      </section>
+      </Section>
     </main>
   );
 };

@@ -41,7 +41,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   return (
     <MoviesWrapper>
-      <Section className="">
+      <Section variant="secondary">
         <Carousel
           title={`Top Rated ${formattedName} Movies`}
           subtitle={`Discover the highest-rated ${formattedName} films that are making waves`}
@@ -53,11 +53,12 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         </Carousel>
       </Section>
 
-      <Section id="top-genres">
+      <Section variant="secondary" id="top-genres">
         <TopMoviesGenres genreId={id} />
       </Section>
 
       <Section
+        variant="secondary"
         id="must-watch"
         className="bg-gradient-to-b from-black-8 via-red-950/80 to-black-8 !py-16 sm:!py-24"
       >

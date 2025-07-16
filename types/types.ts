@@ -40,6 +40,7 @@ export interface MovieCardProps {
   number?: number;
   isGenre?: boolean;
   isWide?: boolean;
+  cols?: boolean;
   isTop?: boolean;
 }
 

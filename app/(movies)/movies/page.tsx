@@ -11,18 +11,19 @@ const page = async () => {
   return (
     <MoviesWrapper>
       {/* New Releases */}
-      <Section id="new-release">
+      <Section variant="secondary" id="new-release">
         <NewReleasesMovies />
       </Section>
 
       {/* Genres Section */}
-      <Section id="genres">
+      <Section variant="secondary" id="genres">
         <MoviesGenres />
       </Section>
 
       {/* Week Choices Section */}
 
       <Section
+        variant="secondary"
         id="week-choices"
         className="bg-gradient-to-b from-black-8 via-red-950/80 to-black-8 !py-16 sm:!py-24"
       >
@@ -30,12 +31,13 @@ const page = async () => {
       </Section>
 
       {/* Top Genres Section */}
-      <Section id="top-genres">
+      <Section variant="secondary" id="top-genres">
         <TopMoviesGenres />
       </Section>
 
       {/* Trending Movies */}
       <Section
+        variant="secondary"
         id="trending"
         className="bg-gradient-to-t from-red-950/80 to-black-8"
       >
@@ -44,6 +46,7 @@ const page = async () => {
 
       {/* Must Watch */}
       <Section
+        variant="secondary"
         id="must-watch"
         className="bg-gradient-to-b from-red-950/80 to-black-8"
       >
