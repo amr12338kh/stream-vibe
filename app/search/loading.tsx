@@ -9,7 +9,7 @@ import React from "react";
 const loading = () => {
   return (
     <main className="pt-10">
-      <Section className="!pb-0">
+      <Section className="pb-0!">
         <Skeleton className="h-12 sm:h-14 w-full rounded-md border border-black-15" />
       </Section>
       <Section>

@@ -1,6 +1,127 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-tablet: 870px;
+
+  --flex-full: 0 0 100%;
+
+  --background-image-movies: url('/movies-background.jpg');
+  --background-image-cta: url('/cta-image.png');
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-black-6: #0f0f0f;
+  --color-black-8: #141414;
+  --color-black-10: #1a1a1a;
+  --color-black-12: #1f1f1f;
+  --color-black-15: #262626;
+  --color-black-20: #333333;
+  --color-black-25: #404040;
+  --color-black-30: #4c4c4c;
+
+  --color-gray-60: #999999;
+  --color-gray-65: #a6a6a6;
+  --color-gray-70: #b3b3b3;
+  --color-gray-75: #bfbfbf;
+  --color-gray-90: #e4e4e7;
+  --color-gray-95: #f1f1f3;
+  --color-gray-97: #f7f7f8;
+  --color-gray-99: #fcfcfd;
+
+  --color-primary: #e50000;
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-dark: #0f0f0f;
+  --color-primary-gray: #1f1f1f;
+  --color-primary-dark-gray: #141414;
+  --color-primary-light-gray: #262626;
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility animate-fade-in {
+  animation: fade-in 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+@utility animate-fade-up {
+  animation: fade-up 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+@utility animate-reveal-glow {
+  animation: reveal-glow 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  opacity: 0;
+}
 
 @layer base {
   :root {
@@ -72,7 +193,7 @@
   }
 
   .secondary-container {
-    @apply !px-0 !pl-4 sm:!pl-0 sm:px-4 !py-0 pb-14 sm:pb-20;
+    @apply px-0! pl-4! sm:pl-0! sm:px-4 py-0! pb-14 sm:pb-20;
   }
 
   .translate-center {
@@ -104,77 +225,64 @@
   }
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -45%) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@keyframes reveal-glow {
-  0% {
-    opacity: 0;
-    filter: blur(80px);
-  }
-  100% {
-    opacity: 0.3;
-    filter: blur(100px);
-  }
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translate(-50%, 20px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-@keyframes pulse-scale {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes glow-pulse {
-  0% {
-    opacity: 0.1;
-    filter: blur(100px);
-  }
-  50% {
-    opacity: 0.3;
-    filter: blur(90px);
-  }
-  100% {
-    opacity: 0.1;
-    filter: blur(100px);
-  }
-}
-
 @layer utilities {
-  .animate-fade-in {
-    animation: fade-in 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    opacity: 0;
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -45%) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
   }
-  .animate-fade-up {
-    animation: fade-up 1s ease-out 0.5s forwards;
-    opacity: 0;
+
+  @keyframes reveal-glow {
+    0% {
+      opacity: 0;
+      filter: blur(80px);
+    }
+    100% {
+      opacity: 0.3;
+      filter: blur(100px);
+    }
   }
-  .animate-reveal-glow {
-    animation: reveal-glow 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
-    opacity: 0;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 20px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  @keyframes pulse-scale {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0% {
+      opacity: 0.1;
+      filter: blur(100px);
+    }
+    50% {
+      opacity: 0.3;
+      filter: blur(90px);
+    }
+    100% {
+      opacity: 0.1;
+      filter: blur(100px);
+    }
   }
 }

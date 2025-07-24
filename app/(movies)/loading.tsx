@@ -10,11 +10,11 @@ import CTASkeleton from "@/components/Skeletons/CTASkeleton";
 const LoadingSkeleton = () => {
   return (
     <main>
-      <Section className="!pb-0 sm:!py-20">
+      <Section className="pb-0! sm:py-20!">
         <BannerSkeleton />
       </Section>
 
-      <Section className="!pt-0" variant="secondary">
+      <Section className="pt-0!" variant="secondary">
         <div className="sm:px-5 md:px-10 pt-0 pb-10 sm:py-16 sm:border border-black-15 sm:relative sm:rounded-xl">
           <div className="space-y-14 sm:space-y-24">
             <div>

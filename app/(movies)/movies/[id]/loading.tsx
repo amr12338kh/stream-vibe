@@ -14,7 +14,7 @@ import CTASkeleton from "@/components/Skeletons/CTASkeleton";
 const loading = () => {
   return (
     <main>
-      <Section className="!pb-0">
+      <Section className="pb-0!">
         <BannerSkeleton />
       </Section>
 

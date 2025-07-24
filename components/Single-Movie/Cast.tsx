@@ -39,7 +39,7 @@ const Cast = ({ cast }: { cast: CastMember[] }) => {
                       loading="lazy"
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black-10/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black-10/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </div>
                   <div className="p-2 max-w-[70px] sm:max-w-[100px] md:max-w-[133px] space-y-1">
                     <h3 className="text-[11px] sm:text-[13px] font-medium leading-3 line-clamp-2">

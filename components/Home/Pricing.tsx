@@ -19,7 +19,7 @@ const Pricing = ({ isHome }: { isHome?: boolean }) => {
     <div>
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between heading-mb">
         <Heading
-          className="md:!mb-0"
+          className="md:mb-0!"
           title="Choose the plan that's right for you"
           subtitle="Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!"
         />

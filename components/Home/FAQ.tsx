@@ -27,7 +27,7 @@ const FAQ = () => {
         <Heading
           title="Frequently Asked Questions"
           subtitle="Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe."
-          className="md:!mb-0"
+          className="md:mb-0!"
         />
         <Button>Ask a Question</Button>
       </div>
@@ -64,7 +64,7 @@ const FAQ = () => {
 const RedLine = ({ className }: { className?: string }) => (
   <div
     className={cn(
-      "my-6 h-[1px] w-full bg-gradient-to-r from-transparent via-primary/90 via-20% to-transparent",
+      "my-6 h-px w-full bg-linear-to-r from-transparent via-primary/90 via-20% to-transparent",
       className
     )}
   />

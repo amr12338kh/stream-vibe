@@ -54,7 +54,7 @@ const Carousel: React.FC<EmblaCarouselProps> = ({
         <Heading
           title={title || "title"}
           subtitle={subtitle}
-          className="!mb-0"
+          className="mb-0!"
         />
       </div>
 
@@ -78,7 +78,7 @@ const Carousel: React.FC<EmblaCarouselProps> = ({
         >
           {/* Triangle background with gradient */}
           <div
-            className="absolute inset-0 bg-gradient-to-r from-black-6 via-black-8/70 to-transparent"
+            className="absolute inset-0 bg-linear-to-r from-black-6 via-black-8/70 to-transparent"
             style={{
               clipPath: "polygon(0% 0%, 100% 50%, 0% 100%)",
             }}
@@ -101,7 +101,7 @@ const Carousel: React.FC<EmblaCarouselProps> = ({
         >
           {/* Triangle background with gradient */}
           <div
-            className="absolute inset-0 bg-gradient-to-l from-black-6 via-black-8/70 to-transparent "
+            className="absolute inset-0 bg-linear-to-l from-black-6 via-black-8/70 to-transparent "
             style={{
               clipPath: "polygon(100% 0%, 0% 50%, 100% 100%)",
             }}

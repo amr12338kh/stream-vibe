@@ -54,7 +54,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <BannerCarousel single movie={movie} />
       </section>
 
-      <Section className="!pt-0 -mt-28 z-20 relative">
+      <Section className="pt-0! -mt-28 z-20 relative">
         <Information movie={movie} credits={credits} reviews={reviews} />
       </Section>
 

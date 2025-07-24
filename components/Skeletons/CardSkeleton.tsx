@@ -5,7 +5,7 @@ import { cardTypeProps } from "@/types/types";
 import { cva } from "class-variance-authority";
 
 export const cardContainerVariants = cva(
-  "group flex flex-col bg-black-10 transition-all duration-300 rounded-2xl border border-black-15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+  "group flex flex-col bg-black-10 transition-all duration-300 rounded-2xl border border-black-15 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary",
   {
     variants: {
       type: {

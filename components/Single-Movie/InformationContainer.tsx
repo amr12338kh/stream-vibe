@@ -23,7 +23,7 @@ const InformationContainer = ({
   return (
     <div
       className={cn(
-        "bg-black-6 backdrop-blur-sm border border-black-15 rounded-xl p-6 sm:p-12 space-y-6 transition-all duration-300",
+        "bg-black-6 backdrop-blur-xs border border-black-15 rounded-xl p-6 sm:p-12 space-y-6 transition-all duration-300",
         className
       )}
     >
@@ -45,7 +45,7 @@ const InformationContainer = ({
           )}
           {reviews && (
             <Button className="bg-black-8 border-black-15 border hover:bg-black-6/80 rounded-lg p-2 sm:p-4 md:p-6 text-xs sm:text-sm">
-              <Plus className="md:!size-5" /> Add Your Review
+              <Plus className="md:size-5!" /> Add Your Review
             </Button>
           )}
         </div>

@@ -8,7 +8,7 @@ const BannerSkeleton = () => {
           <div className="h-[60vh] sm:h-[80vh] w-full relative">
             <Skeleton className="w-full h-full absolute rounded-xl" />
 
-            <div className="w-full h-full bg-gradient-to-t from-black-8 from-[4%] to-transparent z-10 absolute" />
+            <div className="w-full h-full bg-linear-to-t from-black-8 from-4% to-transparent z-10 absolute" />
 
             <div className="flex flex-col justify-end items-center h-full py-14 sm:py-32 px-6 sm:px-16 z-20 relative gap-y-4 sm:gap-y-8">
               <div className="w-3/4 max-w-2xl space-y-4">

@@ -53,7 +53,7 @@ const Features = () => {
               </TableHead>
               <TableHead className="text-white font-medium w-1/4 text-base lg:text-lg xl:text-xl flex items-center gap-2">
                 Standard
-                <Badge className="bg-primary !text-xs text-white rounded">
+                <Badge className="bg-primary text-xs! text-white rounded">
                   Popular
                 </Badge>
               </TableHead>

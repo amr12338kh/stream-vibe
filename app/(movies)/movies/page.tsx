@@ -25,7 +25,7 @@ const page = async () => {
       <Section
         variant="secondary"
         id="week-choices"
-        className="bg-gradient-to-b from-black-8 via-red-950/80 to-black-8 !py-16 sm:!py-24"
+        className="bg-linear-to-b from-black-8 via-red-950/80 to-black-8 py-16! sm:py-24!"
       >
         <WeekChoices />
       </Section>
@@ -39,7 +39,7 @@ const page = async () => {
       <Section
         variant="secondary"
         id="trending"
-        className="bg-gradient-to-t from-red-950/80 to-black-8"
+        className="bg-linear-to-t from-red-950/80 to-black-8"
       >
         <TrendingMovies />
       </Section>
@@ -48,7 +48,7 @@ const page = async () => {
       <Section
         variant="secondary"
         id="must-watch"
-        className="bg-gradient-to-b from-red-950/80 to-black-8"
+        className="bg-linear-to-b from-red-950/80 to-black-8"
       >
         <MustWatchMovies />
       </Section>

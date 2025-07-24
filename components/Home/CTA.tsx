@@ -18,10 +18,10 @@ const CTA = () => {
         priority={false}
         quality={80}
       />
-      <div className="relative w-full h-full z-10 bg-gradient-to-b md:bg-gradient-to-r from-black-6 from-20%  to-primary/25 backdrop-brightness-50 bg-blend-overlay to-90%">
+      <div className="relative w-full h-full z-10 bg-linear-to-b md:bg-linear-to-r from-black-6 from-20%  to-primary/25 backdrop-brightness-50 bg-blend-overlay to-90%">
         <div className="px-8 md:px-20 flex flex-col md:flex-row justify-center md:justify-between items-center w-full h-full gap-y-10 md:gap-y-0">
           <Heading
-            className="!mb-0 text-center md:text-start"
+            className="mb-0! text-center md:text-start"
             titleClassName="uppercase"
             title="Start your free trial today"
             subtitle="This is a clear and concise call to action that encourages users to sign up for a free trial of StreamVibe."

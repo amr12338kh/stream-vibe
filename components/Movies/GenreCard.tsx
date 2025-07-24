@@ -17,12 +17,12 @@ const GenreCard = ({
     <Link
       href={`/movies/genre${isTopGenre ? "/top" : ""}/${genreId}`}
       className={cn(
-        "group/card flex flex-col bg-black-10 transition-all duration-300 rounded-xl border border-black-15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:border-black-20 hover:shadow-lg",
+        "group/card flex flex-col bg-black-10 transition-all duration-300 rounded-xl border border-black-15 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary hover:border-black-20 hover:shadow-lg",
         isGenre &&
           "p-5 sm:p-7 min-w-[230px] sm:min-w-[268px] h-[270px] sm:h-[310px]",
         isTopGenre &&
           "p-5 sm:p-7 min-w-[270px] sm:min-w-[340px] h-[330px] sm:h-[380px]",
-        isWide && "!flex-row overflow-hidden"
+        isWide && "flex-row! overflow-hidden"
       )}
       aria-label={`View details for ${genreName} Genre`}
     >
@@ -38,7 +38,7 @@ const GenreCard = ({
           <div className="flex items-start w-full z-10">
             <div className="flex flex-col items-start space-y-3 w-full">
               <div className="inline-flex items-center gap-2">
-                <span className="inline-flex items-center px-3 py-1.5 text-xs font-bold tracking-wide uppercase rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-md">
+                <span className="inline-flex items-center px-3 py-1.5 text-xs font-bold tracking-wide uppercase rounded-full bg-linear-to-r from-primary to-primary/80 text-primary-foreground shadow-md">
                   Top 10 In
                 </span>
               </div>
@@ -81,10 +81,10 @@ const GenreCard = ({
             </div>
           ))}
           {isWide && (
-            <div className="absolute z-10 bottom-0 left-0 sm:w-[350px] md:w-[450px] lg:w-[300px] h-full bg-gradient-to-r from-black-10 via-black-10 lg:via-black-10/70 to-transparent" />
+            <div className="absolute z-10 bottom-0 left-0 sm:w-[350px] md:w-[450px] lg:w-[300px] h-full bg-linear-to-r from-black-10 via-black-10 lg:via-black-10/70 to-transparent" />
           )}
         </div>
-        <div className="absolute z-10 bottom-0 w-full h-32 bg-gradient-to-t from-black-10 to-transparent" />
+        <div className="absolute z-10 bottom-0 w-full h-32 bg-linear-to-t from-black-10 to-transparent" />
       </div>
 
       {!isWide && (

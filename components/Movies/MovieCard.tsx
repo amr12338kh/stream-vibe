@@ -55,7 +55,7 @@ const Card = ({ movie, isWide, cols, isTop }: MovieCardProps) => {
     <Link
       href={`/movies/${movie.id}`}
       className={cn(
-        "group/card transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:shadow-xl",
+        "group/card transition-all duration-300 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary hover:shadow-xl",
         isWide
           ? `relative aspect-video overflow-hidden ${!cols && "min-w-[320px] sm:min-w-[400px] md:min-w-[500px]"}`
           : isTop
@@ -85,9 +85,9 @@ const Card = ({ movie, isWide, cols, isTop }: MovieCardProps) => {
 
       {isWide && (
         <>
-          <div className="absolute inset-0 bg-black-10/0 transition-colors duration-300 group-hover/card:bg-black-10/10 z-[1] rounded-md" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black-10/70 via-black-10/10 to-transparent rounded-md z-[2]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black-10/60 via-black-10/20 to-transparent rounded-md z-[2]" />
+          <div className="absolute inset-0 bg-black-10/0 transition-colors duration-300 group-hover/card:bg-black-10/10 z-1 rounded-md" />
+          <div className="absolute inset-0 bg-linear-to-t from-black-10/70 via-black-10/10 to-transparent rounded-md z-2" />
+          <div className="absolute inset-0 bg-linear-to-r from-black-10/60 via-black-10/20 to-transparent rounded-md z-2" />
           <div className="z-20 absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover/card:translate-y-[-4px]">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white line-clamp-2 leading-tight drop-shadow-lg mb-3">
               {movie.title}

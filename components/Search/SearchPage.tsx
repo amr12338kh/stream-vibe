@@ -18,7 +18,7 @@ const SearchPage = ({ trendingMovies }: { trendingMovies?: Movie[] }) => {
 
   return (
     <main className="pt-10">
-      <Section className="!pb-0">
+      <Section className="pb-0!">
         <SearchInput />
       </Section>
       <Section>

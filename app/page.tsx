@@ -19,7 +19,7 @@ export default function Home() {
         <Devices />
       </Section>
 
-      <div className="bg-gradient-to-b from-black-8 via-red-950/80 to-black-8 py-10">
+      <div className="bg-linear-to-b from-black-8 via-red-950/80 to-black-8 py-10">
         <Section id="week-choices" variant="homepage">
           <WeekChoices homepage />
         </Section>

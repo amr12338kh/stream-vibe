@@ -106,7 +106,7 @@ const Banner = ({
     <div
       key={index}
       className={cn(
-        "flex-shrink-0 w-full h-full relative",
+        "shrink-0 w-full h-full relative",
         !imageLoaded && "opacity-0"
       )}
     >
@@ -128,14 +128,14 @@ const Banner = ({
       </div>
 
       {/* Gradient Overlay */}
-      <div className="w-full h-full bg-gradient-to-t from-black-8 from-[4%] to-transparent z-10 absolute" />
+      <div className="w-full h-full bg-linear-to-t from-black-8 from-4% to-transparent z-10 absolute" />
 
       {/* Content */}
       <div className="relative z-20 flex items-end pb-20 h-full">
         <div className="w-full mx-auto padding-x pb-24">
           <div className="max-w-2xl lg:max-w-3xl">
             <Heading
-              className="text-center sm:text-left !mb-0"
+              className="text-center sm:text-left mb-0!"
               isBanner
               title={movie.title.toUpperCase()}
               subtitle={movie.overview}
@@ -200,8 +200,8 @@ const Banner = ({
       </div>
 
       {/* Fade edges */}
-      <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-black/20 to-transparent z-10" />
-      <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-black/20 to-transparent z-10" />
+      <div className="absolute top-0 left-0 w-32 h-full bg-linear-to-r from-black/20 to-transparent z-10" />
+      <div className="absolute top-0 right-0 w-32 h-full bg-linear-to-l from-black/20 to-transparent z-10" />
     </div>
   );
 };

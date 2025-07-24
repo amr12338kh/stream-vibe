@@ -23,7 +23,7 @@ const PersonCard = ({
           loading="lazy"
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black-10/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-linear-to-t from-black-10/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
       <div className="space-y-1">
         <h3 className="text-base sm:text-lg font-semibold group-hover:text-white transition-colors duration-300">

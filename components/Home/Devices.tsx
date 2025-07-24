@@ -24,7 +24,7 @@ const Devices = () => {
 
 const Card = ({ icon: Icon, title, content }: DevicesCardProps) => {
   return (
-    <div className=" space-y-6 p-12 rounded-xl border border-black-15 bg-gradient-to-tr bg-black-6 from-transparent from-50% to-primary/10  ">
+    <div className=" space-y-6 p-12 rounded-xl border border-black-15 bg-linear-to-tr bg-black-6 from-transparent from-50% to-primary/10  ">
       <div className=" flex items-center gap-6">
         <div className="p-5 bg-black-8 border border-black-12 rounded-lg">
           {<Icon className=" size-8 text-primary" />}

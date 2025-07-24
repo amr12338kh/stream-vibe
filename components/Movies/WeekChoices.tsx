@@ -9,7 +9,7 @@ const WeekChoices = async ({ homepage }: { homepage?: boolean }) => {
   return (
     <Carousel
       title="This Week's Choices"
-      className={`!gap-0 ${homepage && "2xl:space-x-[-18px]"}`}
+      className={`gap-0! ${homepage && "2xl:space-x-[-18px]"}`}
     >
       {movies.map((movie, i) => (
         <MovieCard key={i} movie={movie} number={i} isTop />
