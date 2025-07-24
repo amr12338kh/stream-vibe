@@ -27,6 +27,10 @@ export const metadata: Metadata = {
     siteName: "StreamVibe",
     type: "website",
   },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
 };
 
 export default function RootLayout({
