@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -7,8 +7,8 @@
 
   --flex-full: 0 0 100%;
 
-  --background-image-movies: url('/movies-background.jpg');
-  --background-image-cta: url('/cta-image.png');
+  --background-image-movies: url("/movies-background.jpg");
+  --background-image-cta: url("/cta-image.png");
 
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
