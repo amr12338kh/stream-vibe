@@ -18,7 +18,8 @@ const loading = () => {
         <RenderCardSkeletons
           className="grid grid-cols-1 tablet:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6"
           count={9}
-          type="wide"
+          isWide
+          cols
         />
       </Section>
       <Section>

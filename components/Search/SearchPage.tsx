@@ -73,7 +73,7 @@ const SearchPage = ({ trendingMovies }: { trendingMovies?: Movie[] }) => {
 const LoadingGrid = () => (
   <div className="grid grid-cols-1 tablet:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
     {[...Array(6)].map((_, i) => (
-      <CardSkeleton key={i} cardType="wide" />
+      <CardSkeleton key={i} isWide cols />
     ))}
   </div>
 );

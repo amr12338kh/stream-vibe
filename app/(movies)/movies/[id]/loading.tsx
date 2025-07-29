@@ -1,4 +1,3 @@
-import React from "react";
 import Section from "@/components/Section";
 import BannerSkeleton from "@/components/Skeletons/BannerSkeleton";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -14,13 +13,11 @@ import CTASkeleton from "@/components/Skeletons/CTASkeleton";
 const loading = () => {
   return (
     <main>
-      <Section className="pb-0!">
-        <BannerSkeleton />
-      </Section>
+      <BannerSkeleton />
 
-      <Section>
-        <div className="flex flex-col xl:grid xl:grid-cols-3 gap-6">
-          <div className="xl:col-span-2 flex flex-col gap-y-8">
+      <Section className="pt-0! -mt-28 z-30 relative">
+        <div className="flex flex-col xl:grid xl:grid-cols-3 gap-2">
+          <div className="xl:col-span-2 flex flex-col gap-y-2">
             {/* Information Section Loading */}
             {/* Movie Details Loading */}
             <InformationContainer className="space-y-4">
@@ -51,9 +48,9 @@ const loading = () => {
               <div className=" space-y-4">
                 <Skeleton className="w-28 h-5" />
                 <div className="flex flex-wrap gap-2">
-                  {Array.from({ length: 4 }).map((_, i) => (
+                  {Array.from({ length: 2 }).map((_, i) => (
                     <div key={i} className=" bg-black-8 p-3 rounded-lg">
-                      <Skeleton className=" w-16 h-3" />
+                      <Skeleton className=" w-18 h-4" />
                     </div>
                   ))}
                 </div>
@@ -65,7 +62,7 @@ const loading = () => {
                   {Array.from({ length: 2 }).map((_, i) => (
                     <div
                       key={i}
-                      className=" w-1/2 rounded-xl bg-black-8 border border-black-15 px-3 sm:px-4 py-5 space-y-2"
+                      className=" rounded-xl bg-black-8 border border-black-15 px-3 sm:px-4 py-5 space-y-2"
                     >
                       <Skeleton className="w-24 h-5" />
                       <div className="flex items-center gap-2">
@@ -84,9 +81,9 @@ const loading = () => {
               <div className=" space-y-4">
                 <Skeleton className="w-28 h-5" />
                 <div className="flex flex-wrap gap-2">
-                  {Array.from({ length: 2 }).map((_, i) => (
+                  {Array.from({ length: 3 }).map((_, i) => (
                     <div key={i} className=" bg-black-8 p-3 rounded-lg">
-                      <Skeleton className=" w-16 h-3" />
+                      <Skeleton className=" w-18 h-4" />
                     </div>
                   ))}
                 </div>
@@ -112,8 +109,8 @@ const loading = () => {
       <Section>
         {/* Recommendations Loading */}
         <div>
-          <HeadingSkeleton isCarousel />
-          <RenderCardSkeletons type="must" />
+          <HeadingSkeleton subtitle className="mb-0!" />
+          <RenderCardSkeletons />
         </div>
       </Section>
 

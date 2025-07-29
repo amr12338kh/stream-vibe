@@ -1,14 +1,15 @@
 import { cn } from "@/lib/utils";
 import CardSkeleton from "./CardSkeleton";
-import { cardTypeProps } from "@/types/types";
 
 const RenderCardSkeletons = ({
-  count = 5,
-  type,
+  count = 10,
+  isWide,
+  cols,
   className,
 }: {
   count?: number;
-  type: cardTypeProps;
+  isWide?: boolean;
+  cols?: boolean;
   className?: string;
 }) => (
   <div
@@ -18,7 +19,7 @@ const RenderCardSkeletons = ({
   >
     {Array.from({ length: count }).map((_, i) => (
       <div key={i}>
-        <CardSkeleton cardType={type} />
+        <CardSkeleton isWide={isWide} cols={cols} />
       </div>
     ))}
   </div>

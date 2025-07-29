@@ -2,14 +2,14 @@ import { Skeleton } from "../ui/skeleton";
 
 export const ReviewsLoading = () => {
   return (
-    <div className="bg-black-10 border border-black-15 rounded-xl p-6 sm:p-12 space-y-4">
+    <div className="bg-black-6 border border-black-15 rounded-xl p-6 sm:p-12 space-y-4">
       <div className="flex items-center justify-between w-full">
         <Skeleton className="h-6 w-24" />
         <Skeleton className="h-8 w-32 sm:h-10 sm:w-40 rounded-lg" />
       </div>
       <div className="overflow-hidden">
         <div className="flex gap-3 lg:gap-5">
-          {Array.from({ length: 2 }).map((_, index) => (
+          {Array.from({ length: 3 }).map((_, index) => (
             <div key={index} className="flex-none">
               <div className="p-6 sm:p-10 rounded-2xl min-h-[175px] sm:min-h-[240px] w-[280px] sm:w-[400px] md:w-[380px] lg:w-[440px] space-y-4 sm:space-y-6 bg-black-8 border border-black-15">
                 <div className="flex items-center justify-between w-full">
