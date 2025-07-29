@@ -76,16 +76,16 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         </div>
       </Section>
 
+      <Section variant="secondary" id="genres">
+        <MoviesGenres genreId={id} />
+      </Section>
+
       <Section
         variant="secondary"
         id="must-watch"
         className="bg-linear-to-b from-black-8 via-red-950/80 to-black-8 py-16! sm:py-24!"
       >
         <MustWatchMovies />
-      </Section>
-
-      <Section variant="secondary" id="genres">
-        <MoviesGenres genreId={id} />
       </Section>
     </MoviesWrapper>
   );
