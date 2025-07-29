@@ -217,11 +217,11 @@
   }
 
   .left-nav-btn {
-    @apply absolute left-0 top-1/2 -translate-y-1/2 z-20 h-full w-16 hidden md:flex items-center justify-center cursor-pointer transition-all duration-300 ease-in-out;
+    @apply absolute bg-gradient-to-r from-black-8/80 from-25% to-transparent left-0 top-1/2 -translate-y-1/2 z-20 h-full w-14 hidden md:flex items-center justify-center cursor-pointer transition-all duration-300 ease-in-out;
   }
 
   .right-nav-btn {
-    @apply absolute right-0 top-1/2 -translate-y-1/2 z-20 h-full w-16 hidden md:flex items-center justify-center cursor-pointer transition-all duration-300 ease-in-out;
+    @apply absolute bg-gradient-to-l from-black-8/80 from-25% to-transparent right-0 top-1/2 -translate-y-1/2 z-20 h-full w-14 hidden md:flex items-center justify-center cursor-pointer transition-all duration-300 ease-in-out;
   }
 }
 

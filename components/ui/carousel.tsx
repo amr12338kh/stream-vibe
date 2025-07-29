@@ -67,7 +67,7 @@ const Carousel: React.FC<EmblaCarouselProps> = ({
         {/* Left Navigation Button */}
         <div
           className={cn(
-            "left-nav-btn",
+            "left-nav-btn group/left-btn",
             isHovered && !prevBtnDisabled
               ? "opacity-100 translate-x-0"
               : "opacity-0 -translate-x-2 pointer-events-none"
@@ -77,20 +77,13 @@ const Carousel: React.FC<EmblaCarouselProps> = ({
           tabIndex={0}
           aria-label="Previous slides"
         >
-          {/* Triangle background with gradient */}
-          <div
-            className="absolute inset-0 bg-linear-to-r from-black-6 via-black-8/70 to-transparent"
-            style={{
-              clipPath: "polygon(0% 0%, 100% 50%, 0% 100%)",
-            }}
-          />
-          <ArrowLeft className="size-6relative z-10 -ml-2" />
+          <ArrowLeft className="size-6 group-hover/left-btn:size-8 transition-transform duration-200" />
         </div>
 
         {/* Right Navigation Button */}
         <div
           className={cn(
-            "right-nav-btn",
+            "right-nav-btn group/right-btn",
             isHovered && !nextBtnDisabled
               ? "opacity-100 translate-x-0"
               : "opacity-0 translate-x-2 pointer-events-none"
@@ -100,14 +93,7 @@ const Carousel: React.FC<EmblaCarouselProps> = ({
           tabIndex={0}
           aria-label="Next slides"
         >
-          {/* Triangle background with gradient */}
-          <div
-            className="absolute inset-0 bg-linear-to-l from-black-6 via-black-8/70 to-transparent "
-            style={{
-              clipPath: "polygon(100% 0%, 0% 50%, 100% 100%)",
-            }}
-          />
-          <ArrowRight className="size-6 relative z-10 -mr-2" />
+          <ArrowRight className="size-6 group-hover/right-btn:size-8 transition-transform duration-200" />
         </div>
 
         {/* Carousel Container */}
