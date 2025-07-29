@@ -22,6 +22,7 @@ const Carousel: React.FC<EmblaCarouselProps> = ({
     "(max-width: 1536px)": { slidesToScroll: isWide ? 2 : 4 },
     "(max-width: 1380px)": { slidesToScroll: isWide ? 2 : 3 },
     "(max-width: 1024px)": { slidesToScroll: isWide ? 1 : 2 },
+    "(max-width: 768px)": { slidesToScroll: 1 },
   } as const;
 
   const [isHovered, setIsHovered] = useState(false);

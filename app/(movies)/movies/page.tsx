@@ -23,7 +23,6 @@ const page = async () => {
       {/* Week Choices Section */}
 
       <Section
-        variant="secondary"
         id="week-choices"
         className="bg-linear-to-b from-black-8 via-red-950/80 to-black-8 py-16! sm:py-24!"
       >
