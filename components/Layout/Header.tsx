@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <>
-      <div className=" fixed top-0 z-40 w-full h-20 bg-linear-to-b from-black-8 via-black-10/50 to-transparent" />
+      <div className=" fixed top-0 z-40 w-full h-20 bg-linear-to-b from-black-8/60 to-transparent" />
       <header
         className={`${shouldUsePaddingX ? "padding-x" : "main-container"} py-4 z-50 fixed top-0 left-1/2 -translate-x-1/2 w-full`}
       >

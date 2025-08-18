@@ -128,7 +128,7 @@ const Banner = ({
       </div>
 
       {/* Gradient Overlay */}
-      <div className="w-full h-full bg-linear-to-t from-black-8 from-4% to-transparent z-10 absolute" />
+      <div className="w-full h-full bg-linear-to-t from-black-8 to-transparent z-10 absolute" />
 
       {/* Content */}
       <div className="relative z-20 flex items-end pb-20 h-full">
@@ -200,8 +200,8 @@ const Banner = ({
       </div>
 
       {/* Fade edges */}
-      <div className="absolute top-0 left-0 w-32 h-full bg-linear-to-r from-black/20 to-transparent z-10" />
-      <div className="absolute top-0 right-0 w-32 h-full bg-linear-to-l from-black/20 to-transparent z-10" />
+      <div className="absolute top-0 left-0 w-32 h-full bg-linear-to-r from-black-8/20 to-transparent z-10" />
+      <div className="absolute top-0 right-0 w-32 h-full bg-linear-to-l from-black-8/20 to-transparent z-10" />
     </div>
   );
 };
