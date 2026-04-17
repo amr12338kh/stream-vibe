@@ -29,7 +29,7 @@
     "motion": "^12.23.9",
     "next": "^16.2.4",
     "next-themes": "^0.4.6",
-    "prettier-plugin-tailwindcss": "^0.6.14",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "query-string": "^9.2.2",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
@@ -44,18 +44,14 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.1.11",
-    "@types/node": "^24",
-    "@types/react": "19.1.8",
-    "@types/react-dom": "19.1.6",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "browserslist": "^4.25.1",
-    "eslint": "^9",
+    "eslint": "^10.2.0",
     "eslint-config-next": "^16.2.4",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.11",
     "typescript": "^6.0.3"
-  },
-  "overrides": {
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3"
   }
 }
