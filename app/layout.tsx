@@ -4,6 +4,7 @@ import { Manrope } from "next/font/google";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
       <body className=" bg-black-8">
         <Header />
         {children}
+        <ScrollToTop />
         <Toaster />
         <footer className="pt-16 sm:pt-20">
           <Footer />

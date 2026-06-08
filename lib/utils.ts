@@ -33,7 +33,7 @@ class TMDBApiError extends Error {
   constructor(
     public statusCode: number,
     public endpoint: string,
-    message: string
+    message: string,
   ) {
     super(message);
     this.name = "TMDBApiError";
@@ -48,7 +48,7 @@ export const getDataFromTMDB = async <T>(
     language?: string;
     region?: string;
     maxRetries?: number;
-  }
+  },
 ): Promise<T> => {
   const {
     params = {},
@@ -57,6 +57,8 @@ export const getDataFromTMDB = async <T>(
     region = "US",
     maxRetries = 3, // Default retry attempts
   } = options || {};
+
+  console.log("TMDB Request URL:", endpoint);
 
   let lastError: Error | null = null;
   let retryDelay = 1000; // Start with 1 second delay
@@ -98,14 +100,14 @@ export const getDataFromTMDB = async <T>(
           throw new TMDBApiError(
             error.response.status,
             endpoint,
-            tmdbError?.status_message || "Client error occurred"
+            tmdbError?.status_message || "Client error occurred",
           );
         }
 
         // For 429 (rate limit) or 5xx errors, retry if we have attempts left
         if (attempt < maxRetries) {
           console.warn(
-            `Attempt ${attempt} failed, retrying in ${retryDelay}ms...`
+            `Attempt ${attempt} failed, retrying in ${retryDelay}ms...`,
           );
           await new Promise((resolve) => setTimeout(resolve, retryDelay));
           retryDelay *= 2; // Exponential backoff
@@ -117,13 +119,13 @@ export const getDataFromTMDB = async <T>(
           tmdbError?.status_code || 500,
           endpoint,
           tmdbError?.status_message ||
-            "An unexpected error occurred after all retries"
+            "An unexpected error occurred after all retries",
         );
       }
 
       // For non-Axios errors throw immediately
       throw new Error(
-        `Failed to fetch data from TMDB: ${(error as Error).message}`
+        `Failed to fetch data from TMDB: ${(error as Error).message}`,
       );
     }
   }
@@ -138,8 +140,8 @@ export const getDataFromTMDB = async <T>(
 export const getTrendingMovies = async () => {
   try {
     const data = await getDataFromTMDB<TMDBResponse>(
-      "/trending/movie/day?page=1&page=2&page=3",
-      { language: "en-US" }
+      "/trending/movie/day?page=1",
+      { language: "en-US" },
     );
     return data.results;
   } catch (error) {
@@ -240,7 +242,7 @@ export const getSingleMovie = async (id: string) => {
 export const getSingleMovieReviews = async (id: string) => {
   try {
     const data = await getDataFromTMDB<MovieReviewResponse>(
-      `/movie/${id}/reviews`
+      `/movie/${id}/reviews`,
     );
     return data.results;
   } catch (error) {
@@ -279,7 +281,7 @@ const getPaginatedMovies = async (
     maxConcurrentRequests?: number;
     queryParams?: Record<string, unknown>;
     cacheTime?: number;
-  } = {}
+  } = {},
 ) => {
   const {
     totalPages = 10,
@@ -305,7 +307,7 @@ const getPaginatedMovies = async (
         getDataFromTMDB<TMDBResponse>(endpoint, {
           params: { ...queryParams, page },
           cacheTime,
-        })
+        }),
       );
 
       const chunkResponses = await Promise.all(
@@ -313,8 +315,8 @@ const getPaginatedMovies = async (
           request.catch((error) => {
             console.error(`Failed to fetch page: ${error.message}`);
             return { results: [] };
-          })
-        )
+          }),
+        ),
       );
 
       allMovies.push(...chunkResponses.flatMap((data) => data.results));
@@ -322,7 +324,7 @@ const getPaginatedMovies = async (
 
     // Remove any duplicate movies by ID
     const uniqueMovies = Array.from(
-      new Map(allMovies.map((movie) => [movie.id, movie])).values()
+      new Map(allMovies.map((movie) => [movie.id, movie])).values(),
     );
 
     if (uniqueMovies.length === 0) {
@@ -333,7 +335,7 @@ const getPaginatedMovies = async (
   } catch (error) {
     console.error(`Failed to fetch movies from ${endpoint}:`, error);
     throw new Error(
-      `Failed to fetch movies from ${endpoint}: ${(error as Error).message}`
+      `Failed to fetch movies from ${endpoint}: ${(error as Error).message}`,
     );
   }
 };
@@ -374,7 +376,7 @@ export const getMovieRecommendations = async (id: string) => {
           sort_by: "vote_average.desc",
           "vote_count.gte": 100, // Ensure quality recommendations
         },
-      }
+      },
     );
     return data.results;
   } catch (error) {
@@ -395,7 +397,7 @@ export const getSearchedMovies = async (term: string) => {
       },
     });
     return data.results.filter(
-      (movie) => movie.poster_path && movie.backdrop_path && movie.overview
+      (movie) => movie.poster_path && movie.backdrop_path && movie.overview,
     ); // Only return movies with complete data
   } catch (error) {
     console.error("Failed to fetch searched movies: ", error);
